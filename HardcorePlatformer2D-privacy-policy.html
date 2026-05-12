@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎮 Privacy Policy – Hardcore Platformer 2D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #12121c;
+      --border: #1e1e30;
+      --accent: #ff3c3c;
+      --accent2: #ffcc00;
+      --accent3: #3cefff;
+      --text: #d0d0e8;
+      --muted: #6a6a8a;
+      --pixel: 2px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      line-height: 1.85;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Scanline overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.12) 2px,
+        rgba(0,0,0,0.12) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Pixel grid background */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,60,60,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,60,60,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    .game-icon {
+      font-size: 56px;
+      display: block;
+      margin-bottom: 20px;
+      animation: bounce 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+
+    header h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(14px, 4vw, 22px);
+      color: var(--accent);
+      text-shadow: 3px 3px 0 #7a0000, 0 0 20px rgba(255,60,60,0.4);
+      line-height: 1.5;
+      letter-spacing: 1px;
+    }
+
+    header .subtitle {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(8px, 2vw, 11px);
+      color: var(--accent2);
+      margin-top: 12px;
+      text-shadow: 2px 2px 0 #7a5800;
+      letter-spacing: 2px;
+    }
+
+    .meta {
+      margin-top: 20px;
+      display: inline-block;
+      background: var(--panel);
+      border: var(--pixel) solid var(--border);
+      padding: 8px 18px;
+      font-size: 12px;
+      color: var(--muted);
+      border-left: 3px solid var(--accent3);
+    }
+
+    /* ── SECTION PANELS ── */
+    .section {
+      background: var(--panel);
+      border: var(--pixel) solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 28px 28px 24px;
+      margin-bottom: 24px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .section:hover {
+      border-left-color: var(--accent3);
+    }
+
+    /* Pixel corner decoration */
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -2px; right: -2px;
+      width: 10px; height: 10px;
+      background: var(--accent);
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+
+    .section:hover::before {
+      background: var(--accent3);
+    }
+
+    .section h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(9px, 2.5vw, 12px);
+      color: var(--accent2);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: var(--pixel) dashed var(--border);
+      line-height: 1.6;
+      text-shadow: 1px 1px 0 #7a5800;
+    }
+
+    .section h3 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(7px, 1.8vw, 10px);
+      color: var(--accent3);
+      margin: 20px 0 10px;
+      line-height: 1.6;
+    }
+
+    .section p {
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    /* ── LISTS ── */
+    .pixel-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    .pixel-list li {
+      padding: 6px 0 6px 22px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .pixel-list li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+      top: 8px;
+    }
+
+    .pixel-list li strong {
+      color: var(--accent2);
+    }
+
+    /* ── AD NETWORK CHIPS ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      background: var(--bg);
+      border: var(--pixel) solid var(--border);
+      border-top: 2px solid var(--accent3);
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+      white-space: nowrap;
+    }
+
+    /* ── RIGHTS GRID ── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .right-card {
+      background: var(--bg);
+      border: var(--pixel) solid var(--border);
+      padding: 12px 14px;
+      border-top: 2px solid var(--accent2);
+    }
+
+    .right-card .icon { font-size: 18px; margin-bottom: 6px; display: block; }
+    .right-card strong { color: var(--accent2); display: block; margin-bottom: 4px; font-size: 13px; }
+    .right-card span { color: var(--muted); font-size: 12px; }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight {
+      background: rgba(255,204,0,0.07);
+      border: var(--pixel) solid rgba(255,204,0,0.25);
+      border-left: 4px solid var(--accent2);
+      padding: 14px 18px;
+      margin: 14px 0;
+      color: var(--text);
+    }
+
+    .highlight strong { color: var(--accent2); }
+
+    /* ── CONTROLS BOX ── */
+    .controls-box {
+      background: rgba(60,239,255,0.05);
+      border: var(--pixel) solid rgba(60,239,255,0.2);
+      padding: 14px 18px;
+      margin-top: 14px;
+    }
+
+    .controls-box p { margin-bottom: 8px; }
+    .kbd {
+      background: var(--border);
+      border: 1px solid var(--muted);
+      border-bottom: 3px solid var(--muted);
+      padding: 2px 8px;
+      font-size: 11px;
+      border-radius: 2px;
+      color: var(--accent3);
+    }
+
+    /* ── LINKS ── */
+    a {
+      color: var(--accent3);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent3);
+      transition: color 0.15s;
+    }
+    a:hover { color: #fff; border-bottom-color: #fff; }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      background: var(--panel);
+      border: var(--pixel) solid var(--border);
+      border-top: 4px solid var(--accent2);
+      padding: 32px 28px;
+      text-align: center;
+      margin-top: 32px;
+      position: relative;
+    }
+
+    .contact-section h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(10px, 2.5vw, 14px);
+      color: var(--accent2);
+      margin-bottom: 16px;
+      text-shadow: 2px 2px 0 #7a5800;
+    }
+
+    .email-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--accent);
+      color: #fff !important;
+      border: none;
+      padding: 12px 28px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      cursor: pointer;
+      text-decoration: none !important;
+      box-shadow: 4px 4px 0 #7a0000;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .email-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 #7a0000;
+      color: #fff !important;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: var(--pixel) dashed var(--border);
+    }
+
+    footer .pixel-bar {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: var(--border);
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .container { padding: 28px 16px 60px; }
+      .section { padding: 20px 18px; }
+      .rights-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <span class="game-icon">🎮</span>
+    <h1>PRIVACY POLICY</h1>
+    <div class="subtitle">Hardcore Platformer 2D</div>
+    <div class="meta">Last Updated: May 12, 2025 &nbsp;|&nbsp; PM Simulator Games</div>
+  </header>
+
+  <!-- INTRO -->
+  <div class="section">
+    <h2>01. Welcome</h2>
+    <p>
+      Welcome to <strong style="color:var(--accent2)">Hardcore Platformer 2D</strong> ("the Game"). This Privacy Policy explains how
+      <strong style="color:var(--accent2)">PM Simulator Games</strong> ("we," "us," or "our"), an individual developer based in
+      Hisar, Haryana, India, collects, uses, discloses, and protects information when you use our mobile game application.
+    </p>
+    <p>
+      By downloading, installing, or playing the Game, you agree to the collection and use of information in accordance with this
+      Privacy Policy. If you do not agree with this policy, please do not use the Game.
+    </p>
+  </div>
+
+  <!-- INFORMATION WE COLLECT -->
+  <div class="section">
+    <h2>02. Information We Collect</h2>
+
+    <h3>2.1 Personal Information</h3>
+    <p>We <strong style="color:var(--accent2)">do not directly collect</strong> any personally identifiable information (PII) such as your name, email address, phone number, or physical address through the Game itself.</p>
+
+    <h3>2.2 Non-Personal Information</h3>
+    <p>We collect non-personal information automatically through third-party services integrated into the Game:</p>
+    <ul class="pixel-list">
+      <li><strong>Device Information:</strong> Device model, operating system version, unique device identifiers (such as Android Advertising ID), mobile network information</li>
+      <li><strong>Game Usage Data:</strong> Game events, sessions, progress, levels completed, in-game actions, crash reports, performance data</li>
+      <li><strong>Technical Data:</strong> IP address, time zone settings, and general location (country/city level based on IP)</li>
+      <li><strong>Advertising Data:</strong> Ad impressions, clicks, ad interaction data, and advertising identifiers</li>
+    </ul>
+
+    <h3>2.3 Permissions We Request</h3>
+    <ul class="pixel-list">
+      <li><strong>Internet Access:</strong> Required to display ads, sync game data, and connect to third-party services</li>
+      <li><strong>Phone Notifications:</strong> To send you notifications about game updates, events, and promotional offers (you can disable these in your device settings)</li>
+    </ul>
+  </div>
+
+  <!-- HOW WE USE -->
+  <div class="section">
+    <h2>03. How We Use Your Information</h2>
+    <ul class="pixel-list">
+      <li><strong>Game Functionality:</strong> To provide, maintain, and improve the Game experience</li>
+      <li><strong>Analytics:</strong> To understand how users interact with the Game, identify bugs, and improve performance</li>
+      <li><strong>Advertising:</strong> To display personalized and non-personalized advertisements via LevelPlay (IronSource) SDK</li>
+      <li><strong>Crash Reporting:</strong> To identify and fix technical issues and crashes</li>
+      <li><strong>Communications:</strong> To send push notifications about game updates, events, and offers</li>
+      <li><strong>Legal Compliance:</strong> To comply with legal obligations and enforce our terms</li>
+    </ul>
+  </div>
+
+  <!-- THIRD-PARTY SERVICES -->
+  <div class="section">
+    <h2>04. Third-Party Services</h2>
+    <p>The Game integrates several third-party services that may collect information used to identify you. These services have their own privacy policies and we encourage you to review them.</p>
+
+    <h3>4.1 Analytics Services</h3>
+    <ul class="pixel-list">
+      <li>
+        <strong>Firebase (Google LLC):</strong> For analytics, crash reporting, and cloud messaging —
+        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy Policy ↗</a>
+      </li>
+    </ul>
+
+    <h3>4.2 Advertising Network — LevelPlay (IronSource)</h3>
+    <p>
+      The Game uses <strong style="color:var(--accent2)">LevelPlay</strong> (by Unity / IronSource) as its ad mediation platform.
+      LevelPlay connects to multiple ad networks to serve ads. By using the Game, you may receive ads from the following networks:
+    </p>
+
+    <div class="chips">
+      <span class="chip">LevelPlay / IronSource</span>
+      <span class="chip">Google AdMob</span>
+      <span class="chip">AppLovin</span>
+      <span class="chip">Unity Ads</span>
+      <span class="chip">Meta Audience Network</span>
+    </div>
+
+    <ul class="pixel-list" style="margin-top:18px">
+      <li><strong>LevelPlay / IronSource:</strong> <a href="https://ironsource.com/privacy-policy/" target="_blank" rel="noopener">ironsource.com/privacy-policy ↗</a></li>
+      <li><strong>Google AdMob:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy ↗</a></li>
+      <li><strong>AppLovin:</strong> <a href="https://www.applovin.com/privacy/" target="_blank" rel="noopener">applovin.com/privacy ↗</a></li>
+      <li><strong>Unity Ads:</strong> <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">unity.com/legal/privacy-policy ↗</a></li>
+      <li><strong>Meta Audience Network:</strong> <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">facebook.com/privacy/policy ↗</a></li>
+    </ul>
+
+    <div class="highlight">
+      <strong>Note on Advertising:</strong> Our advertising partners may use cookies and similar technologies to collect information about your device and serve personalized ads. You can opt-out of personalized advertising through your device settings (Google Advertising ID settings on Android).
+    </div>
+  </div>
+
+  <!-- DATA SHARING -->
+  <div class="section">
+    <h2>05. Data Sharing &amp; Disclosure</h2>
+    <p>We do not sell, trade, or rent your personal information to third parties. We may share information in the following circumstances:</p>
+    <ul class="pixel-list">
+      <li><strong>Service Providers:</strong> With third-party service providers (analytics, advertising, hosting) who assist us in operating the Game</li>
+      <li><strong>Legal Requirements:</strong> When required by law, legal process, or government request</li>
+      <li><strong>Business Transfers:</strong> In connection with any merger, sale of assets, or acquisition</li>
+      <li><strong>Protection:</strong> To protect the rights, property, or safety of PM Simulator Games, our users, or others</li>
+    </ul>
+  </div>
+
+  <!-- CHILDREN'S PRIVACY -->
+  <div class="section">
+    <h2>06. Children's Privacy (COPPA)</h2>
+    <p>
+      <strong style="color:var(--accent2)">Age Restriction:</strong> Hardcore Platformer 2D is intended for general audiences and may be played by children. We are committed to protecting children's privacy.
+    </p>
+    <p>
+      We do not knowingly collect personal information from children under the age of 13 (or the applicable age in your jurisdiction) without verifiable parental consent. If we become aware that we have collected personal information from a child under 13 without proper consent, we will take steps to delete that information as quickly as possible.
+    </p>
+    <div class="highlight">
+      <strong>For Parents &amp; Guardians:</strong> If you believe your child has provided us with personal information, please contact us at <a href="mailto:pmsimulatorgames@gmail.com">pmsimulatorgames@gmail.com</a>. We will work with you to address any concerns promptly.
+    </div>
+  </div>
+
+  <!-- YOUR RIGHTS -->
+  <div class="section">
+    <h2>07. Your Rights &amp; Choices</h2>
+
+    <h3>7.1 GDPR Rights (European Users)</h3>
+    <div class="rights-grid">
+      <div class="right-card"><span class="icon">📂</span><strong>Access</strong><span>Request access to your personal data</span></div>
+      <div class="right-card"><span class="icon">✏️</span><strong>Rectification</strong><span>Request correction of inaccurate data</span></div>
+      <div class="right-card"><span class="icon">🗑️</span><strong>Erasure</strong><span>Request deletion of your data</span></div>
+      <div class="right-card"><span class="icon">🔒</span><strong>Restriction</strong><span>Request restriction of processing</span></div>
+      <div class="right-card"><span class="icon">📦</span><strong>Portability</strong><span>Request transfer of your data</span></div>
+      <div class="right-card"><span class="icon">🚫</span><strong>Objection</strong><span>Object to processing of your data</span></div>
+    </div>
+
+    <h3>7.2 CCPA Rights (California Users)</h3>
+    <ul class="pixel-list">
+      <li>Know what personal information is collected</li>
+      <li>Know whether personal information is sold or disclosed</li>
+      <li>Say no to the sale of personal information</li>
+      <li>Access your personal information</li>
+      <li>Request deletion of your personal information</li>
+      <li>Equal service and price, even if you exercise your privacy rights</li>
+    </ul>
+
+    <h3>7.3 General User Controls</h3>
+    <div class="controls-box">
+      <p><span class="kbd">OPT-OUT ADS</span> &nbsp; Android: Settings › Google › Ads › Opt out of Ads Personalization</p>
+      <p><span class="kbd">NOTIFICATIONS</span> &nbsp; Disable push notifications in your device settings</p>
+      <p><span class="kbd">UNINSTALL</span> &nbsp; Stop all data collection by uninstalling the Game</p>
+      <p><span class="kbd">RESET AD ID</span> &nbsp; Reset your advertising identifier in your device settings</p>
+    </div>
+  </div>
+
+  <!-- DATA RETENTION -->
+  <div class="section">
+    <h2>08. Data Retention</h2>
+    <p>
+      We retain collected information for as long as necessary to provide the Game services and fulfill the purposes outlined in this Privacy Policy. We may retain certain information for longer periods for legal, regulatory, or technical reasons. When data is no longer needed, we will delete or anonymize it.
+    </p>
+  </div>
+
+  <!-- DATA SECURITY -->
+  <div class="section">
+    <h2>09. Data Security</h2>
+    <p>We implement appropriate technical and organizational security measures to protect your information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+    <ul class="pixel-list">
+      <li>Encryption of data in transit using SSL/TLS</li>
+      <li>Use of secure third-party services with strong security practices</li>
+      <li>Regular security assessments and updates</li>
+      <li>Limited access to personal information</li>
+    </ul>
+    <div class="highlight">
+      <strong>Note:</strong> No method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
+    </div>
+  </div>
+
+  <!-- INTERNATIONAL TRANSFERS -->
+  <div class="section">
+    <h2>10. International Data Transfers</h2>
+    <p>
+      Your information may be transferred to and processed in countries other than your country of residence, including India and the United States, where our third-party service providers operate. These countries may have different data protection laws than your country.
+    </p>
+    <p>
+      By using the Game, you consent to the transfer of your information to these countries. We ensure that such transfers comply with applicable data protection laws and that appropriate safeguards are in place.
+    </p>
+  </div>
+
+  <!-- CHANGES TO POLICY -->
+  <div class="section">
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes by:</p>
+    <ul class="pixel-list">
+      <li>Posting the updated policy in the Game</li>
+      <li>Updating the "Last Updated" date at the top of this policy</li>
+      <li>Sending a push notification (for significant changes)</li>
+    </ul>
+    <p>Your continued use of the Game after changes are posted constitutes your acceptance of the updated Privacy Policy. We encourage you to review this policy periodically.</p>
+  </div>
+
+  <!-- DO NOT TRACK -->
+  <div class="section">
+    <h2>12. Do Not Track Signals</h2>
+    <p>
+      Some browsers and devices have "Do Not Track" features. Currently, there is no industry standard for responding to Do Not Track signals. As such, we do not respond to Do Not Track signals at this time.
+    </p>
+  </div>
+
+  <!-- THIRD-PARTY LINKS -->
+  <div class="section">
+    <h2>13. Third-Party Links</h2>
+    <p>
+      The Game may contain links to third-party websites or services. We are not responsible for the privacy practices of these third parties. We encourage you to read the privacy policies of any third-party sites you visit.
+    </p>
+  </div>
+
+  <!-- CONSENT -->
+  <div class="section">
+    <h2>14. Consent</h2>
+    <p>
+      By using <strong style="color:var(--accent2)">Hardcore Platformer 2D</strong>, you hereby consent to this Privacy Policy and agree to its terms. If you do not agree with this policy, please do not use the Game.
+    </p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>📧 Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us. We will respond within 30 days.</p>
+    <br/>
+    <p style="color:var(--muted)">PM Simulator Games</p>
+    <p style="color:var(--muted)">Hisar, Haryana, India</p>
+    <a class="email-btn" href="mailto:pmsimulatorgames@gmail.com">✉ pmsimulatorgames@gmail.com</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="pixel-bar">█ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █</div>
+    <p>© 2025 PM Simulator Games. All rights reserved.</p>
+    <p style="margin-top:6px">Hardcore Platformer 2D &nbsp;|&nbsp; Hisar, Haryana, India</p>
+  </footer>
+
+</div>
+</body>
+</html>
